@@ -1,0 +1,4 @@
+insert into empleados (id, apellido_materno, apellido_paterno, codigo_postal, fecha_nacimiento, ingresos, nombre) 
+values (null, 'SOLANO','GARCIA','000123', '1994-05-15', 999.9, 'JOSE');
+insert into empleados (id, apellido_materno, apellido_paterno, codigo_postal, fecha_nacimiento, ingresos, nombre) 
+values (null, 'SOLANO','GARCIA','000123', '1996-06-20', 2000.9, 'BENITO');

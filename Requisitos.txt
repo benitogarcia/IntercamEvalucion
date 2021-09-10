@@ -1,0 +1,64 @@
+1)Deberás realizar una aplicación con spring boot
+
+	✔ a)Publicara servicios REST para hacer el CRUD, (Create, Read, Update y Delete) de la siguiente tabla el read deberá poderse consultar todos los registros o uno en especifico por el ID
+
+
+		*********************************************
+		****************** Cliente ******************
+		*********************************************
+
+		Campo			    Tipo de Dato
+
+		Id 					Numérico Consecutivo
+
+		Nombre				Carácter(512)
+
+		ApellidoPaterno 	Carácter(512)
+
+		ApellidoMaterno 	Carácter(512)
+
+		fechaNacimiento 	Date
+
+		Ingresos 			Numero Flotante
+
+		CodigoPostal 		Carácter (6)
+
+
+	✔ b)La tabla deberá estar en base de datos H2
+
+	✔ c) El acceso a la base de datos deberá ser mediante JPA y spring orm
+
+	✔ d) Crear la interfaz gráfica en Angular o Framework html5 similar que consuma los servicios y que tenga
+
+		✔ a. Pantalla con la lista de clientes presentando en un grid el:
+			* Id
+			* Nombre
+			* Apellido Paterno
+			* Ingresos(formatear el campo $###,###,##0.00)
+			* fecha con formato(YYYY/MM/DD)
+
+		✔ b.La columna de Grid debe de tener un link que redirija al formulario para editar el registro seleccionado
+
+		✔ c. Deberá incluirse una columna a la derecha con un link que diga borrar el cual deberá solicitar confirmación y de aceptar el usuario invocar el borrado del registro y refrescar el grid
+
+		✔ d.Tendrá un botón para crear un nuevo registro que redirija al formulario para crear un nuevo registro (debe ser el mismo que en la edición)
+
+		✔ e.Deberá tener un cuadro de búsqueda por id que filtrara el grid para presentar solo el id que se haya solicitado
+
+		✔ f. Formulario para editar deberá servir para guardar ya sea un registro nuevo o editar un existente con las siguientes reglas
+
+			✔ i.Todos los campos excepto ApellidoMaterno e Ingresos son requeridos
+
+			✔ ii.El campo Id no es editable
+
+			✔ iii.En Nombre y apellidos debe permitir solo caracteres alfabéticos incluido ñ y acentos
+
+			✔ iv.Fecha de nacimiento deberá poderse capturar con el teclado o mediante un calendar y deberá ser una fecha valida menor al día de “hoy”
+
+			✔ v.Ingresos debe permitir solo la captura de números flotantes mayores a 0
+
+			✔ vi.Código postal debe permitir solo caracteres numéricos y validar que se capturen exactamente 5 dígitos
+
+			✔ vii.Deberá tener un botón de guardar que si los datos son válidos inserte o actualice el registro actual
+
+			✔ viii.Deberá tener un botón de cancelar que regrese al grid y lo refresque

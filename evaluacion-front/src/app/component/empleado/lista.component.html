@@ -1,0 +1,62 @@
+<app-menu></app-menu>
+<div class="container">
+  <h2>Lista de Empleados</h2>
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <button type="button" class="btn btn-success float-right mb-3" routerLink="empleado/form">Nuevo</button>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <div class="alert alert-danger alert-dismissible" *ngIf="errorLoadDelete">
+      <button type="button" class="close" (click)="alertReset()">&times;</button>
+      <strong>Error!</strong>  {{msgErrrorDelete}}
+    </div>
+    <div class="alert alert-success alert-dismissible" *ngIf="errorLoadSuccess">
+      <button type="button" class="close" (click)="alertReset()">&times;</button>
+      <strong>Completo!</strong> {{msgErrrorSuccess}}
+    </div>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Ape. Paterno</th>
+          <th>Ingresos</th>
+          <th>Fecha Nac.</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="myTable">
+        <tr *ngFor="let empleado of empleados">
+          <td class="filterId">{{empleado.id}}</td>
+          <td>{{empleado.nombre}}</td>
+          <td>{{empleado.apellidoPaterno}}</td>
+          <td>{{empleado.ingresos | currency}}</td>
+          <td>{{empleado.fechaNacimiento |  date: 'yyyy/MM/dd'}}</td>
+          <td class="text-center">
+            <div class="dropdown">
+              <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                Acción
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#" routerLink="empleado/form/{{empleado.id}}">
+                  <i class="fas fa-pencil-alt"></i> Editar
+                </a>
+                <a class="dropdown-item" href="#"
+                  (click)="deleteEmpleado(empleado.id, empleado.nombre, empleado.apellidoPaterno)">
+                  <i class="far fa-trash-alt"></i> Eliminar
+                </a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="errorLoad">
+          <td class="text-center" colspan="6" >{{msgError}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,74 @@
+<app-menu></app-menu>
+<div class="container">
+    <h2>Form Empleado</h2>
+    <p class="text-dark"><span class="text-danger">*</span> Obligatorio.</p>
+    <form (ngSubmit)="onSubmit()" novalidate #f="ngForm">
+        <div class="alert alert-info alert-dismissible" *ngIf="f.submitted && isSubmitSuccess" >
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Completo!</strong><br><span [innerHTML]='msgSuccess'></span>
+        </div>
+        <div class="alert alert-danger alert-dismissible" *ngIf="f.submitted && isSubmitError">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Error!</strong><br><span [innerHTML]='msgErrror'></span>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label for="id">ID:</label>
+                    <input type="text" class="form-control" [(ngModel)]="empleado.id" name="id" id="id" disabled>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label for="nombre">Nombre: <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [(ngModel)]="empleado.nombre" id="nombre"
+                        placeholder="Enter Nombre" name="nombre" required>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label for="apellidoPaterno">Ape. Paterno: <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="apellidoPaterno" [(ngModel)]="empleado.apellidoPaterno"
+                        placeholder="Enter Apellido Paterno" name="apellidoPaterno" required>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label for="apellidoMaterno">Ape. Materno:</label>
+                    <input type="text" class="form-control" id="apellidoMaterno" [(ngModel)]="empleado.apellidoMaterno"
+                        placeholder="Enter Apellido Materno" name="apellidoMaterno">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de Nacimiento: <span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" id="fechaNacimiento" [(ngModel)]="empleado.fechaNacimiento"
+                        placeholder="Enter Fecha Nacimiento" name="fechaNacimiento" required>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label for="ingresos">Ingresos:</label>
+                    <input type="number" step="0.1" class="form-control" id="ingresos" [(ngModel)]="empleado.ingresos"
+                        placeholder="Enter Ingresos" name="ingresos" required>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <label for="codigoPostal">Código Postal: <span class="text-danger">*</span></label>
+                    <input type="text" pattern="[0-9]{5}" class="form-control" id="codigoPostal"
+                        [(ngModel)]="empleado.codigoPostal" placeholder="Enter Código Postal 5 digitos."
+                        name="codigoPostal" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="!f.valid">Guardar</button>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <button type="button" class="btn btn-danger btn-block" routerLink="/">Cancelar</button>
+            </div>
+        </div>
+    </form>
+</div>
